@@ -1,7 +1,7 @@
 import "dotenv/config";
 
 import express, { Express, Request, Response } from "express";
-import { morgan } from "./middlewares";
+import { errorReponseHandler, missingRouteHandler, morgan } from "./middlewares";
 import { PORT } from "./utils/constants";
 
 const app: Express = express();
@@ -17,6 +17,9 @@ app.use("/api/healthcheck", (req: Request, res: Response) => {
     errors: null
   })
 });
+
+app.use(errorReponseHandler);
+app.use(missingRouteHandler);
 
 app.listen(PORT, () => {
   console.log(`app is running on port ${PORT}`);

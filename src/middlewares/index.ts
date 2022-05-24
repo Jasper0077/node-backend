@@ -1,3 +1,4 @@
 import { morgan } from "./morgan";
+import { missingRouteHandler, errorReponseHandler } from "./errors";
 
-export { morgan }
+export { morgan, missingRouteHandler, errorReponseHandler };
